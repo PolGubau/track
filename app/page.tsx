@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 import Link from "next/link";
+import { Routes } from "@/constants/routes";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,13 +18,14 @@ export default function Home() {
         <h1
           className={cn("text-6xl font-semibold text-primary", font.className)}
         >
-          <span className="opacity-75">Pol/</span>Track
+          <span className="text-primary">Pol/</span>
+          <span className="text-secondary">Track</span>
         </h1>
-        <p className="text-primary-foreground text-lg">
+        <p className="text-secondary text-lg">
           Log your habits and track your progress
         </p>
         <div>
-          <Link href={"/auth/login"} className={buttonVariants()}>
+          <Link href={Routes.login} className={buttonVariants()}>
             Sign in
           </Link>
         </div>
