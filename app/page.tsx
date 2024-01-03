@@ -12,14 +12,16 @@ const font = Poppins({
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-sky-400">
+    <main className="flex h-full flex-col items-center justify-center ">
       <div className="space-y-6 text-center">
         <h1
-          className={cn("text-6xl font-semibold text-sky-50", font.className)}
+          className={cn("text-6xl font-semibold text-primary", font.className)}
         >
-          🔐 Auth
+          <span className="opacity-75">Pol/</span>Track
         </h1>
-        <p className="text-sky-100 text-lg">A simple authentication service</p>
+        <p className="text-primary-foreground text-lg">
+          Log your habits and track your progress
+        </p>
         <div>
           <Link href={"/auth/login"} className={buttonVariants()}>
             Sign in
