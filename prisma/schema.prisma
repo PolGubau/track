@@ -81,3 +81,72 @@ model TwoFactorConfirmation {
 
   @@unique([userId])
 }
+
+model Person {
+  id           String    @id @default(cuid())
+  name         String
+  email        String?
+  phone        String?
+  company      String?
+  places       Place[]   @relation("PersonPlaces")
+  activities   Activity[] @relation("ActivityParticipants")
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+}
+
+model Place {
+  id           String    @id @default(cuid())
+  name         String 
+  description  String? 
+  image        String? 
+  location     String? 
+  coordinates  String?
+  people       Person[]  @relation("PersonPlaces")
+  activities   Activity[] @relation("ActivityLocations")
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+}
+
+model Activity {
+  id           String    @id @default(cuid())
+  name         String
+  description  String?
+  image        String?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  people       Person[]  @relation("ActivityParticipants")
+  places       Place[]   @relation("ActivityLocations")
+}
+
+// food is a combination of vegetables, meat... as Pasta
+// meal is the event of eating somewhere, with someone...
+model Food {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+model Meal {
+  id          String    @id @default(cuid())
+  date        DateTime @default(now())
+  type       String   @default("Lunch")
+  description String?
+  image       String? 
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+
+
+
+model Transport {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  type        String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
